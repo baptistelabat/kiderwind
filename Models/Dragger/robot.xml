@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!--
+  Version: 2011-07-20
+-->
+
+<PropertyList>
+
+  <path>wt9_dynamic.ac</path>
+  
+  <offsets>
+          <x-m>0.0</x-m>
+          <y-m>0.0</y-m>
+          <z-m>1.0</z-m>
+    <pitch-deg>0</pitch-deg>
+    
+  </offsets>
+  
+  
+  
+  
+<!-- animations -->
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+        <property>sim/glider/dragger/flags/run</property>
+        <value>0.50</value>
+      </greater-than>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>propeller</object-name>
+    <condition>
+      <less-than>
+        <property>sim/glider/dragger/flags/run</property>
+        <value>0.50</value>
+      </less-than>
+    </condition>
+  </animation>
+  
+ <animation>
+   <type>spin</type>
+   <object-name>propdisc</object-name>
+   <property>sim/glider/dragger/flags/run</property>
+   <factor>5</factor>
+   <center>
+     <x-m> 0.00</x-m>
+     <y-m> 0.00</y-m>
+     <z-m>-0.03</z-m>
+   </center>
+   <axis>
+     <x>-1.0</x>
+     <y> 0.0</y>
+     <z> 0.0</z>
+   </axis>
+ </animation>
+
+
+
+
+</PropertyList>

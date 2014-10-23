@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!--
+  Version: 2012-03-12
+-->
+
+<PropertyList>
+
+  <path>towingrope.ac</path>
+  
+  <offsets>
+          <x-m>0.0</x-m>
+          <y-m>0.0</y-m>
+          <z-m>0.0</z-m>
+    <pitch-deg>0</pitch-deg>
+    
+  </offsets>
+  
+  
+  
+  
+<!-- animations -->
+  <animation>
+    <type>scale</type>
+    <object-name>towingrope</object-name>
+    <property>sim/glider/dragger/flags/run</property>
+    <x-factor>60</x-factor>
+  </animation>
+  
+
+
+</PropertyList>

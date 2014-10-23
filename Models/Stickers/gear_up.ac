@@ -1,0 +1,26 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+MATERIAL "sticker" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "Plane"
+data 5
+Plane
+texture "gear_up.png"
+texrep 1 1
+crease 30.000000
+numvert 4
+0.02 0 -0.007
+0.02 0 0.007
+-0.02 0 0.007
+-0.02 0 -0.007
+numsurf 1
+SURF 0x00
+mat 1
+refs 4
+0 0.99996560812 0.999844908714
+3 0.000116157294542 1.00072598457
+2 0.0 7.5497901264e-08
+1 1.0 0.0
+kids 0

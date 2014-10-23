@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<PropertyList> 
+
+  <path>pilot.ac</path>
+  <texture-path>Textures</texture-path>
+
+  <animation> 
+    <type>select</type>
+    <object-name>pilot_foot</object-name>
+    <object-name>pilot_head_1</object-name>
+    <object-name>pilot_shoe</object-name>
+    <object-name>pilot_sweater</object-name>
+    <object-name>pilot_trousers</object-name>
+    <object-name>pilot_hand</object-name>
+    <object-name>pilot_hat</object-name>
+    <object-name>pilot_head_1</object-name>
+    <condition>
+      <not>
+        <property>sim/current-view/internal</property>
+      </not>
+    </condition>
+  </animation>
+
+	
+</PropertyList>

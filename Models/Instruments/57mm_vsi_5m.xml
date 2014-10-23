@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<!-- climb/sink indicator -->
+
+<PropertyList>
+
+  <path>57mm_vsi_5m.ac</path>
+  <texture-path>Textures</texture-path>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle</object-name>
+    <property>instrumentation/te-vario/te-reading2-mps</property>
+    <interpolation>
+      <entry><ind> -5</ind><dep>-150</dep></entry> <!-- - 5m/s -->
+      <entry><ind>  5</ind><dep> 150</dep></entry> <!--   5m/s -->
+    </interpolation>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+</PropertyList>

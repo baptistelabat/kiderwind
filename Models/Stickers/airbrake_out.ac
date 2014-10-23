@@ -1,0 +1,25 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "Plane"
+data 5
+Plane
+texture "airbrake_out.png"
+texrep 1 1
+crease 30.000000
+numvert 4
+0.025 0 -0.007
+0.025 0 0.007
+-0.025 0 0.007
+-0.025 0 -0.007
+numsurf 1
+SURF 0x00
+mat 0
+refs 4
+0 1.00001490116 0.999978542328
+3 5.00266069139e-05 1.00005614758
+2 0.0 7.5497901264e-08
+1 1.0 0.0
+kids 0

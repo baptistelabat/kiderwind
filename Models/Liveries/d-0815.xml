@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<PropertyList>
+  <sim>
+    <model>
+    
+      <livery>
+        <name type="string">D-0815</name>
+        <texture>dg101g_outside.d-0815.png</texture>
+      </livery>
+      
+    
+    </model>
+  </sim>
+</PropertyList>

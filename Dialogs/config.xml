@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<!-- version: 2011-09-26 -->
+<PropertyList>
+  <name>config_dialog</name>
+  <layout>vbox</layout>
+  <default-padding>1</default-padding>
+  <modal>false</modal>
+  <width>500</width>
+
+<!-- headline -->
+  <group>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>DG101-G Configuration</label>
+      <font>
+        <name>times_bold</name>
+      </font>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </group>
+
+    <hrule/>
+    <hrule/>
+
+<!-- pilots weight configuration -->
+<!-- Due to limitations of jsbsim to handle SI units, input is done
+     in imperial units. Mapping to SI units is only done for gui. 
+     See dialogs.nas for corresponding helper functions -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Pilot Mass</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999  </label>
+        <live>true</live>
+        <format>%0.0f kg </format>
+        <property>sim/glider/gui/config/mass_pilot_kg</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>50kg</label>
+        </text>
+      </group>
+      <slider>
+        <name>pilots_weight</name>
+        <property>/fdm/jsbsim/inertia/pointmass-weight-lbs</property>
+        <min>110.0</min>
+        <max>220.0</max>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>100kg</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+  <hrule/>
+
+<!-- payload weight configuration -->
+<!-- Due to limitations of jsbsim to handle SI units, input is done
+     in imperial units. Mapping to SI units is only done for gui. 
+     See dialogs.nas for corresponding helper functions -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Payload Mass</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999  </label>
+        <live>true</live>
+        <format>%0.0f kg </format>
+        <property>sim/glider/gui/config/mass_payload_kg</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0kg</label>
+        </text>
+      </group>
+      <slider>
+        <name>pilots_weight</name>
+        <property>/fdm/jsbsim/inertia/pointmass-weight-lbs[3]</property>
+        <min>  0.0</min>
+        <max>110.0</max>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>50kg</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+  <hrule/>
+
+<!-- water ballast configuration -->
+<!-- Due to limitations of jsbsim to handle SI units, input is done
+     in imperial units. Mapping to SI units is only done for gui. 
+     See dialogs.nas for corresponding helper functions -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Water Ballast per Tank</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999  </label>
+        <live>true</live>
+        <format>%0.0f kg </format>
+        <property>sim/glider/gui/config/mass_tank_kg</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0kg</label>
+        </text>
+      </group>
+      <slider>
+        <name>ballastpertank_weight</name>
+        <property>/fdm/jsbsim/inertia/pointmass-weight-lbs[1]</property>
+        <property>/fdm/jsbsim/inertia/pointmass-weight-lbs[2]</property>
+        <min>0.0</min>
+        <max>110.0</max>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>50kg</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+  <hrule/>
+  <hrule/>
+
+<!-- bottom line -->
+  <group>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <button>
+      <legend>Close</legend>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </group>
+
+</PropertyList>

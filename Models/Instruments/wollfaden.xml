@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<PropertyList> 
+
+  <path>wollfaden.ac</path>
+  <texture-path>Textures</texture-path>
+
+  <animation> 
+    <type>rotate</type>
+    <object-name>faden</object-name>
+    <property>fdm/jsbsim/aero/beta-deg</property>
+<!--
+    <factor>-5</factor>
+-->
+    <interpolation>
+      <entry>
+        <ind> -179</ind>
+        <dep>  179</dep>
+      </entry>
+      <entry>
+        <ind>  -20</ind>
+        <dep>   20</dep>
+      </entry>
+      <entry>
+        <ind>  -15</ind>
+        <dep>   17</dep>
+      </entry>
+      <entry>
+        <ind>  -10</ind>
+        <dep>   15</dep>
+      </entry>
+      <entry>
+        <ind>   -6</ind>
+        <dep>   13</dep>
+      </entry>
+      <entry>
+        <ind>   -4</ind>
+        <dep>   11</dep>
+      </entry>
+      <entry>
+        <ind>   -2</ind>
+        <dep>    8</dep>
+      </entry>
+      <entry>
+        <ind>   -1</ind>
+        <dep>    5</dep>
+      </entry>
+      <entry>
+        <ind>    1</ind>
+        <dep>   -5</dep>
+      </entry>
+      <entry>
+        <ind>    2</ind>
+        <dep>   -8</dep>
+      </entry>
+      <entry>
+        <ind>    4</ind>
+        <dep>  -11</dep>
+      </entry>
+      <entry>
+        <ind>    6</ind>
+        <dep>  -13</dep>
+      </entry>
+      <entry>
+        <ind>   10</ind>
+        <dep>  -15</dep>
+      </entry>
+      <entry>
+        <ind>   15</ind>
+        <dep>  -17</dep>
+      </entry>
+      <entry>
+        <ind>   20</ind>
+        <dep>  -20</dep>
+      </entry>
+      <entry>
+        <ind>  179</ind>
+        <dep> -179</dep>
+      </entry>
+    </interpolation>
+    <axis> 
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+    <center>
+      <x-m>0.0</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+  </animation>
+
+</PropertyList>

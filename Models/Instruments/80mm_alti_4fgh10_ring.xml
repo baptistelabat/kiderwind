@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<!-- Altimeter indicator -->
+
+<PropertyList>
+
+  <path>80mm_alti_4fgh10_ring.ac</path>
+  <texture-path>Textures</texture-path>
+
+
+  <animation>
+    <type>rotate</type>
+    <object-name>scalering</object-name>
+    <property>/instrumentation/altimeter/setting-scalering</property>
+    <interpolation>
+     <entry>
+       <ind>0</ind>
+       <dep>0</dep>
+     </entry>
+     <entry>
+       <ind>1000</ind>
+       <dep>360</dep>
+     </entry>
+      </interpolation>
+   <axis>
+     <x>-1</x>
+     <y>0</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>scalering</object-name>
+  <action>
+    <name>increase adjust fine</name>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/altimeter/setting-scalering</property>
+      <step>10</step>
+      <min>0</min>
+      <max>1000</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  </animation>
+  
+  <animation>
+  <type>pick</type>
+  <object-name>scalering</object-name>
+  <action>
+    <name>decrease adjust fine</name>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/altimeter/setting-scalering</property>
+      <step>-10</step>
+      <min>0</min>
+      <max>1000</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  </animation>
+
+
+</PropertyList>

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+
+<!-- Altimeter indicator -->
+
+<PropertyList>
+
+  <path>80mm_alti_4fgh10.ac</path>
+  <texture-path>Textures</texture-path>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle-100m</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <!-- factor 0.3048 for conversion from 1 foot to 1 meter -->
+    <!-- factor 0.36 for conversion from 1000 meters to 360 degree -->
+    <!-- total factor 0.36 * 0.3048 = 0.109728 -->
+    <factor>0.109728</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle-1000m</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.0109728</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <!-- 1 inHg = 33.863882 mbar -->
+  <!-- 10 mbar -: 27degree rotation -->
+  <!-- 950 mbar = 28.053488 inHg -: -135degree -->
+  <!-- 1050 mbar = 31.006487 inHg -: +135degree -->
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>scaleadjust</object-name>
+    <property>/instrumentation/altimeter/setting-inhg</property>
+    <interpolation>
+     <entry>
+       <ind>28.053488</ind>
+       <dep>-135</dep>
+     </entry>
+     <entry>
+       <ind>31.006487</ind>
+       <dep> 135</dep>
+     </entry>
+      </interpolation>
+   <axis>
+     <x>-1</x>
+     <y>0</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>knob</object-name>
+  <action>
+    <name>increase calibrate fine</name>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/altimeter/setting-inhg</property>
+      <step>0.01</step>
+      <min>28.05</min>
+      <max>31.01</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  </animation>
+  
+  <animation>
+  <type>pick</type>
+  <object-name>knob</object-name>
+  <action>
+    <name>decrease calibrate fine</name>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/altimeter/setting-inhg</property>
+      <step>-0.01</step>
+      <min>28.05</min>
+      <max>31.01</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  </animation>
+
+
+</PropertyList>

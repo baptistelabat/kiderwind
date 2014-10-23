@@ -1,0 +1,50 @@
+Blender Objekte:
+
+aileron_l			animiert	rotation um:		2.215 / -7.085 / 0.435		2.496 / -4.498 / 0.308
+aileron_r			animiert	rotation um:		2.215 / +7.085 / 0.436		2.496 / +4.498 / 0.308
+airbrake_l			animiert	translation in: 	0 / 0 / 0.1
+airbrake_r			animiert	translation in: 	0 / 0 / 0.1
+canopy
+elevator			animiert	rotation um:	
+elevator_fix
+fuselage
+pedal_l				animiert
+pedal_r				animiert
+rudder				animiert
+rudder_fix
+stick				animiert
+stick_brake			animiert
+stick_brakeflaps		animiert
+stick_clutch			animiert
+stick_gear			animiert
+stick_trim			animiert
+tower
+wheel_back_f
+wheel_back_r
+wheel_main_f		animiert
+wheel_main_r		animiert
+wings
+
+
+
+
+Animationen aus DG-101G.xml
+
+stick
+pedal_l
+peda_r
+rudder
+elevator
+aileron_l
+aileron_r
+stick_brakeflaps
+airbrake_l
+airbrake_r
+stick_trim
+stick_gear
+wheel_main
+gearbox_l
+gearbox_r
+stick_brake
+stick_clutch
+balast

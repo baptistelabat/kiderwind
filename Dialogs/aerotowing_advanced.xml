@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<!-- Version: 2011-09-28 -->
+
+<PropertyList>
+  <name>aerotowing_advanced</name>
+  <layout>vbox</layout>
+  <default-padding>5</default-padding>
+  <modal>true</modal>
+  <width>500</width>
+
+<!-- the title bar -->
+  <group>
+    <layout>hbox</layout>
+    <empty><stretch>true</stretch></empty>
+    <text>
+      <label>Aerotowing Advanced Configuration</label>
+    </text>
+    <empty><stretch>true</stretch></empty>
+  </group>
+
+  <hrule/>
+  <hrule/>
+
+<!-- advanced aerotowing parameters -->
+  <!-- nominal tow force -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Nominal Tow Force</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f lbs</format>
+        <property>/sim/glider/towing/conf/nominal_towforce_lbs</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>100lbs</label>
+        </text>
+      </group>
+      <slider>
+        <name>nominal_towforce</name>
+        <property>/sim/glider/towing/conf/nominal_towforce_lbs</property>
+        <min>100</min>
+        <max>2000</max>
+        <step>10</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>2000lbs</label>
+        </text>
+      </group>
+    </group>
+  </group>
+    <!-- breaking tow force -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Breaking Tow Force</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f lbs </format>
+        <property>/sim/glider/towing/conf/breaking_towforce_lbs</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>1000lbs</label>
+        </text>
+      </group>
+      <slider>
+        <name>aerotow_length</name>
+        <property>/sim/glider/towing/conf/breaking_towforce_lbs</property>
+        <min>1000</min>
+        <max>10000</max>
+        <step>10</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>10000lbs</label>
+        </text>
+      </group>
+    </group>
+  </group>
+<!-- force starting point -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>relative starting point force</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>9999</label>
+        <live>true</live>
+        <format>%0.2f</format>
+        <property>/sim/glider/towing/conf/rope_x1</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+       <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.5</label>
+        </text>
+      </group>
+      <slider>
+        <name>aerotow_length</name>
+        <property>/sim/glider/towing/conf/rope_x1</property>
+        <min>0.5</min>
+        <max>0.95</max>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>0.95</label>
+        </text>
+      </group>
+    </group>
+  </group>
+<!-- tow characteristics -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Tow Characteristics</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>9999</label>
+        <live>true</live>
+        <format>%0.1f</format>
+        <property>/sim/glider/towing/conf/rope_characteristics</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+       <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>1</label>
+        </text>
+      </group>
+      <slider>
+        <name>aerotow_length</name>
+        <property>/sim/glider/towing/conf/rope_characteristics</property>
+        <min>1</min>
+        <max>4</max>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>4</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+
+  <hrule/>
+  <hrule/>
+
+<!-- bottom line -->
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <legend>Reset Properties</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.resetTowing()</script>
+      </binding>
+    </button>
+    <empty><stretch>true</stretch></empty>
+    <button>
+      <legend>Close</legend>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <!-- possible draggers listing -->
+    <nasal>
+      <open>
+      </open>
+      <close>
+      </close>
+    </nasal>
+
+</PropertyList>

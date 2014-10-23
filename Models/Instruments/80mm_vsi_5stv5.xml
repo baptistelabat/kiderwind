@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!-- climb/sink indicator -->
+<!-- author:  Nikolaus Kerner -->
+<!-- version: 2012-08-04      -->
+
+<PropertyList>
+
+  <path>80mm_vsi_5stv5.ac</path>
+  <texture-path>Textures</texture-path>
+
+  
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>glas</object-name>
+  </effect>
+  
+  
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>needle</object-name>
+    <property>instrumentation/te-vario/te-reading1-mps</property>
+    <interpolation>
+      <entry><ind> -5.00</ind><dep>-125</dep></entry> <!-- - 5m/s -->
+      <entry><ind>  5.00</ind><dep> 125</dep></entry> <!--   5m/s -->
+    </interpolation>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+
+</PropertyList>

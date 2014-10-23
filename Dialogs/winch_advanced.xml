@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<!-- version: 2011-09-26 -->
+
+<PropertyList>
+  <name>winch_advanced_dialog</name>
+  <layout>vbox</layout>
+  <default-padding>1</default-padding>
+  <modal>true</modal>
+  <width>500</width>
+
+<!-- headline -->
+  <group>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>Winch Advanced Configuration</label>
+      <font>
+        <name>times_bold</name>
+      </font>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </group>
+
+  <hrule/>
+  <hrule/>
+
+<!-- winch advanced configuration -->
+
+
+<!-- winch working control strategies -->
+
+<!-- rope speed dependend control strategy -->
+  <group>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>Rope speed dependent force reduction</label>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </group>
+
+<!-- reference speed for beginning of force reduction -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>X1: reduction beginning at</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f km/h</format>
+        <property>/sim/glider/gui/winch/speed_x1</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>50%</label>
+        </text>
+      </group>
+      <slider>
+        <name>winch_force</name>
+        <property>/sim/glider/winch/conf/k_speed_x1</property>
+        <min>0.50</min>
+        <max>0.95</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>95%</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- force at max. speed -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Y2: at max. speed force reduction to </label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f daN</format>
+        <property>/sim/glider/gui/winch/speed_y2</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label> 0%</label>
+        </text>
+      </group>
+      <slider>
+        <name>winch_force</name>
+        <property>/sim/glider/winch/conf/k_speed_y2</property>
+        <min>0.00</min>
+        <max>0.90</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>90%</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+
+<!-- rope angle dependend control strategy -->
+  <group>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>Rope angle dependent force reduction</label>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </group>
+
+  <!-- angle correction of winch, x1 -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>X1: reduction beginning at</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f deg</format>
+        <property>/sim/glider/gui/winch/angle_x1</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>50%</label>
+        </text>
+      </group>
+      <slider>
+        <name>winch_force</name>
+        <property>/sim/glider/winch/conf/k_angle_x1</property>
+        <min>0.50</min>
+        <max>0.95</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>95%</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+  <!-- angle correction of winch, y2 -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Y2: at max. angle reduction to</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f daN</format>
+        <property>/sim/glider/gui/winch/angle_y2</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label> 0%</label>
+        </text>
+      </group>
+      <slider>
+        <name>winch_force</name>
+        <property>/sim/glider/winch/conf/k_angle_y2</property>
+        <min>0.00</min>
+        <max>0.90</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>90%</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+    <hrule/>
+    <hrule/>
+
+<!-- bottom line -->
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <legend>Reset</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.resetWinch()</script>
+      </binding>
+    </button>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+    <button>
+      <legend>Close</legend>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+</PropertyList>

@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!-- sound files used from various other planes: -->
+<!-- - from the bocian by AJ MacLeod  --> 
+<!-- - from the ASK21 by Heiko Schulz --> 
+<!-- - from the ASK13 by Patrice Poly -->
+
+<!-- author:  Nikolaus Kerner -->
+<!-- version: 2012-07-10      -->
+
+<PropertyList>
+
+  <fx>
+  
+   <!-- ground reactions -->
+    <main-wheel-rumble>
+      <name>main-wheel-rumble</name>
+      <mode>looped</mode>
+      <path>Aircraft/DG-101G/Sounds/ground_roll2.wav</path>
+      <condition>
+        <property>/gear/gear[0]/wow</property>  <!-- main wheel -->
+      </condition>
+      <volume>
+        <property>velocities/groundspeed-kt</property>
+        <factor>0.25</factor>
+      </volume>
+    </main-wheel-rumble>
+    
+    <tail-wheel-rumble>
+      <name>tail-wheel-rumble</name>
+      <mode>looped</mode>
+      <path>Aircraft/DG-101G/Sounds/ground_roll3.wav</path>
+      <condition>
+        <property>/gear/gear[1]/wow</property>  <!-- tail wheel -->
+      </condition>
+      <volume>
+        <property>velocities/groundspeed-kt</property>
+        <factor>0.25</factor>
+      </volume>
+    </tail-wheel-rumble>
+    
+    <left-wing-tip>
+      <name>left-wing-tip</name>
+      <mode>once</mode>
+      <path>Aircraft/DG-101G/Sounds/left-wing-tip.wav</path>
+      <condition>
+        <property>/gear/gear[2]/wow</property>  <!-- skid on left side -->
+      </condition>
+    </left-wing-tip>
+    
+    <right-wing-tip>
+      <name>right-wing-tip</name>
+      <mode>once</mode>
+      <path>Aircraft/DG-101G/Sounds/right-wing-tip.wav</path>
+      <condition>
+        <property>/gear/gear[3]/wow</property>  <!-- skid on right side -->
+      </condition>
+    </right-wing-tip>
+    
+    
+    
+    
+   <!-- handling noises -->
+    <airbrakes_lock>
+      <name>airbrakes_lock</name>
+      <mode>once</mode>
+      <path>Aircraft/DG-101G/Sounds/airbrakes-lock.wav</path>
+      <condition>
+        <equals>
+          <property>controls/engines/engine/throttle</property>
+          <value>1</value>
+        </equals>  
+      </condition>
+    </airbrakes_lock>
+    
+    <cable_release>
+      <name>cable_release</name>
+      <mode>once</mode>
+      <path>Aircraft/DG-101G/Sounds/winch_release.wav</path>
+      <condition>
+        <property>sim/glider/winch/flags/pull</property>
+      </condition>
+    </cable_release>
+    
+    
+    
+    
+   <!-- wind noises --> 
+    <wind>
+      <name>wind</name>
+      <mode>looped</mode>
+      <path>Aircraft/DG-101G/Sounds/wind-dg101g.wav</path>
+      <property>velocities/airspeed-kt</property>
+      <volume>
+        <property>position/altitude-ft</property>
+        <factor>-0.000015</factor>
+        <offset>1.0</offset>
+        <min>0.1</min>
+        <max>1.0</max>
+      </volume>
+      <volume>
+        <property>velocities/airspeed-kt</property>
+        <factor>0.015</factor>
+        <min>0.03</min>
+        <max>5</max>
+      </volume>
+      <pitch>
+        <property>velocities/airspeed-kt</property>
+        <factor>0.002</factor>
+        <offset>1</offset>
+      </pitch> 
+    </wind>
+    
+    <airbrakes>
+     <name>airbrakes</name>
+     <mode>looped</mode>
+     <path>Aircraft/DG-101G/Sounds/airbrakes2.wav</path>
+     <property>velocities/airspeed-kt</property>
+     <volume>
+       <property>/surface-positions/speedbrake-pos-norm</property>
+       <factor>0.6</factor>
+       <offset>0.0</offset>
+       <min>0.0</min>
+       <max>2</max>
+     </volume>
+     <volume> 
+       <property>velocities/airspeed-kt</property>
+       <factor>0.015</factor>
+       <min>0.00</min>
+       <max>5</max>
+     </volume>
+     <pitch>
+       <property>velocities/airspeed-kt</property>
+       <factor>0.002</factor>
+       <offset>1</offset>
+     </pitch> 
+    </airbrakes>
+    
+    <winch_tow>
+      <name>winch_tow</name>
+      <mode>looped</mode>
+      <path>Aircraft/DG-101G/Sounds/winch_tow.wav</path>
+      <condition>
+        <equals>
+          <property>sim/glider/winch/flags/pull</property>
+          <value>1</value>
+        </equals>
+      </condition>
+      <volume>
+        <property>velocities/airspeed-kt</property>
+        <factor>0.01</factor>
+        <max>1</max>
+      </volume>
+    </winch_tow>
+    
+    
+    
+    
+  </fx>
+ 
+</PropertyList>

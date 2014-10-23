@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<!-- version: 2012-05-23 -->
+
+<PropertyList>
+  <name>winch_dialog</name>
+  <layout>vbox</layout>
+  <default-padding>1</default-padding>
+  <modal>false</modal>
+  <width>500</width>
+
+<!-- headline -->
+  <group>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>Winch Configuration</label>
+      <font>
+        <name>times_bold</name>
+      </font>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </group>
+
+  <hrule/>
+  <hrule/>
+
+<!-- winch configuration -->
+<!-- initial rope length in meters -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Winch Tow Length</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f m </format>
+        <property>/sim/glider/winch/conf/rope_initial_length_m</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>100m</label>
+        </text>
+      </group>
+      <slider>
+        <name>winchtow_length</name>
+        <property>/sim/glider/winch/conf/rope_initial_length_m</property>
+        <min>100.0</min>
+        <max>1200.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>1200m</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- max. pull force of winch -->
+<!-- Due to limitations of jsbsim to handle SI units, input is done
+     in imperial units. Mapping to SI units is only done for gui. 
+     See dialogs.nas for corresponding helper functions -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Winch Pull Force</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f daN </format>
+        <property>/sim/glider/gui/winch/pull_max_daN</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>250daN</label>
+        </text>
+      </group>
+      <slider>
+        <name>winch_force</name>
+        <property>/sim/glider/winch/conf/pull_max_lbs</property>
+        <min>551</min>
+        <max>1653</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>750daN</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+<!-- max. pull speed of winch -->
+<!-- Internal calculations are done in m/s. Mapping to km/h units is only done for gui. 
+     See dialogs.nas for corresponding helper functions -->
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <halign>left</halign>
+      <label>Winch Pull Speed</label>
+    </text>
+    <group>
+      <layout>hbox</layout>
+      <halign>right</halign>
+      <text>
+        <label>999999</label>
+        <live>true</live>
+        <format>%0.0f km/h </format>
+        <property>/sim/glider/gui/winch/pull_max_speed_kmh</property>
+        <color>
+          <red>0.2</red>
+          <green>0.9</green>
+          <blue>0.2</blue>
+        </color>
+      </text>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+      <vrule/>
+      <group>
+        <width>60</width>
+        <text>
+          <label>108km/h</label>
+        </text>
+      </group>
+      <slider>
+        <name>winch_force</name>
+        <property>/sim/glider/winch/conf/pull_max_speed_mps</property>
+        <min>30.0</min>
+        <max>50.0</max>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </slider>
+      <group>
+        <width>60</width>
+        <text>
+          <label>180km/h</label>
+        </text>
+      </group>
+    </group>
+  </group>
+
+  <hrule/>
+
+<!-- advanced configuration -->
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+    <button>
+      <legend>advanced configuration</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.winch_advanced_dialog.open()</script>
+      </binding>
+    </button>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+  </group>
+
+    <hrule/>
+    <hrule/>
+
+<!-- bottom line -->
+  <group>
+    <layout>hbox</layout>
+    <button>
+      <legend>Reset</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.resetWinch()</script>
+      </binding>
+    </button>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+    <button>
+      <legend>Create</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.placeWinch()</script>
+      </binding>
+    </button>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+    <button>
+      <legend>Remove</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.removeWinch()</script>
+      </binding>
+    </button>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+    <button>
+      <legend>Run</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.startWinch()</script>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+    <empty>
+      <pref-height>6</pref-height>
+    </empty>
+    <button>
+      <legend>Cancel</legend>
+      <binding>
+        <command>nasal</command>
+        <script>dg101g.guiWinchCancel()</script>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+</PropertyList>

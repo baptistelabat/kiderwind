@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!--
+  Version: 2012-12-27
+-->
+
+<PropertyList>
+
+  <path>winchrope.ac</path>
+  
+  <offsets>
+    <x-m>0.0</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0</z-m>
+    <pitch-deg>0</pitch-deg>
+  </offsets>
+  
+  
+<!-- animations -->
+  <animation>
+    <type>translate</type>
+    <object-name>parachute_open</object-name>
+    <object-name>parachute_closed</object-name>
+    <property>sim/glider/winchrope/flags/exist</property>
+    <factor>-5</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>parachute_open</object-name>
+    <condition>
+      <not>
+        <property>sim/glider/winch/flags/hooked</property>
+      </not>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>parachute_closed</object-name>
+    <condition>
+        <property>sim/glider/winch/flags/hooked</property>
+    </condition>
+  </animation>
+  
+  
+  <animation>
+    <type>scale</type>
+    <object-name>winchrope</object-name>
+    <property>sim/glider/winchrope/flags/exist</property>
+    <x-factor>200</x-factor>
+  </animation>
+
+
+</PropertyList>

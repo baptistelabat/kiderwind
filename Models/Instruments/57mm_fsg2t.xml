@@ -1,0 +1,525 @@
+<?xml version="1.0"?>
+<PropertyList> 
+
+<!-- Radio FSG 2T from Dittel Messtechnik GmbH
+       frequency range: 118.000 - 136.975 MHz,
+       channel pitch:   25 kHz
+       memory:          20 channels
+-->
+
+<!-- 
+    attributes from tree:
+      instrumentation/comm/ptt                       =    0   (int)
+      instrumentation/comm/servicable                = true   (unspecified)
+      instrumentation/comm/volume                    = 0.6    (double)
+      instrumentation/comm/frequecies/selected-mhz   = 120.65 (double)
+      instrumentation/comm/frequencies/standby-mhz   = 118.50 (double)
+    attributes new to tree
+      instrumentation/fsg2t/buffer                   = [118.000 - 136.975] (float)
+      instrumentation/fsg2t/channel                  = [1 - 20] (int)
+      instrumentation/fsg2t/mode                     = [0/1] (int)
+      instrumentation/fsg2t/select                   = [0/1] (int)
+-->
+
+<!-- objects to be animated:
+       buttons:
+         FCH            switches from frequency mode to channel mode and back
+         SEL            switches from MHz to kHz and back
+       knobs:
+         VOL            adjusts volume and power-on
+         TUNE           adjusts frequency, MHz or kHz
+       display
+         digit-1        000.0x MHz
+         digit-2        000.x0 MHz
+         digit-3        00x.00 MHz
+         digit-4        0x0.00 MHz
+         digit-5        x00.00 MHz
+         digit-6        CH or dc
+         digit-7        00x
+         digit-8        0x0
+         digit-9        x00
+         digit-010      decimal delimiter voltage
+         digit-011      decimal delimiter MHz
+         digit-012      indicator kHz
+         digit-013      indicator MHz
+         digit-014      indicator channel
+         led-green      indicates operation of radio
+         led-yellow     indicates operation of radio
+         led-off        indicates no operation of radio
+-->
+
+
+  <path>57mm_fsg2t.ac</path>
+  <texture-path>Textures</texture-path>
+
+
+<!-- volume knob , 0 is also power-off -->
+
+    <animation>
+      <type>rotate</type>
+      <object-name>VOL</object-name>
+      <property>instrumentation/comm/volume</property>
+      <factor>300</factor>
+      <center>
+        <x-m> 0.000</x-m>
+        <y-m>-0.015</y-m>
+        <z-m>-0.012</z-m>
+      </center>
+      <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+      </axis>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>VOL</object-name>
+      <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.1</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>instrumentation/comm/volume</property>
+          <step>-0.05</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>VOL</object-name>
+      <action>
+        <button>1</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.1</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>instrumentation/comm/volume</property>
+          <step>0.05</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+    </animation>
+
+
+<!-- mode button , switches from channel to frequency and back -->
+
+    <animation>
+      <type>pick</type>
+      <object-name>FCH</object-name>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>instrumentation/fsg2t/mode</property>
+          <value>0</value>
+          <value>1</value>
+        </binding>
+      </action>
+    </animation>
+
+
+<!-- select button (frequ-select) , switches from MHz to kHz and back -->
+
+    <animation>
+      <type>pick</type>
+      <object-name>SEL</object-name>
+      <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>instrumentation/fsg2t/select</property>
+          <value>0</value>
+          <value>1</value>
+        </binding>
+      </action>
+    </animation>
+
+
+<!-- TUNE knob -->
+
+    <animation>
+      <type>rotate</type>
+      <object-name>TUNE</object-name>
+      <property>instrumentation/comm/frequencies/selected-mhz</property>
+      <factor>10</factor>
+      <center>
+        <x-m> 0.000</x-m>
+        <y-m> 0.015</y-m>
+        <z-m>-0.012</z-m>
+      </center>
+      <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+      </axis>
+    </animation>
+
+
+
+<!-- TUNE knob , MHz or kHz depending on SEL, frequency or channel depending on MODE -->
+
+    <animation>
+      <type>pick</type>
+      <object-name>TUNE</object-name>
+      <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.1</interval-sec>
+        <binding>                                 <!-- Frequency mode, MHz -->
+          <condition>
+            <and>
+              <equals>
+                <property>instrumentation/fsg2t/select</property>
+                <value>1</value>
+              </equals>
+              <equals>
+                <property>instrumentation/fsg2t/mode</property>
+                <value>0</value>
+              </equals>
+            </and>
+          </condition>
+          <command>property-adjust</command>
+          <property>instrumentation/comm/frequencies/selected-mhz</property>
+          <mask>integer</mask>
+          <step>-1</step>
+          <min>118</min>
+          <max>136</max>
+          <resolution>1</resolution>
+          <wrap>true</wrap>
+        </binding>
+        <binding>                                 <!-- Frequency mode, kHz -->
+          <condition>
+            <and>
+              <equals>
+                <property>instrumentation/fsg2t/select</property>
+                <value>0</value>
+              </equals>
+              <equals>
+                <property>instrumentation/fsg2t/mode</property>
+                <value>0</value>
+              </equals>
+            </and>
+          </condition>
+          <command>property-adjust</command>
+          <property>instrumentation/comm/frequencies/selected-mhz</property>
+          <step>-0.025</step>
+          <min>118.000</min>
+          <max>136.975</max>
+          <resolution>0.025</resolution>
+          <wrap>true</wrap>
+        </binding>
+        <binding>                                 <!-- Channel mode, channel -->
+          <condition>
+            <equals>
+              <property>instrumentation/fsg2t/mode</property>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>instrumentation/fsg2t/channel</property>
+          <mask>integer</mask>
+          <step>-1</step>
+          <min>1</min>
+          <max>20</max>
+          <resolution>1</resolution>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>TUNE</object-name>
+      <action>
+        <button>1</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.1</interval-sec>
+        <binding>                                 <!-- Frequency mode, MHz -->
+          <condition>
+            <and>
+              <equals>
+                <property>instrumentation/fsg2t/select</property>
+                <value>1</value>
+              </equals>
+              <equals>
+                <property>instrumentation/fsg2t/mode</property>
+                <value>0</value>
+              </equals>
+            </and>
+          </condition>
+          <command>property-adjust</command>
+          <property>instrumentation/comm/frequencies/selected-mhz</property>
+          <mask>integer</mask>
+          <step> 1</step>
+          <min>118</min>
+          <max>136</max>
+          <resolution>1</resolution>
+          <wrap>true</wrap>
+        </binding>
+        <binding>                                 <!-- Frequency mode, kHz -->
+          <condition>
+            <and>
+              <equals>
+                <property>instrumentation/fsg2t/select</property>
+                <value>0</value>
+              </equals>
+              <equals>
+                <property>instrumentation/fsg2t/mode</property>
+                <value>0</value>
+              </equals>
+            </and>
+          </condition>
+          <command>property-adjust</command>
+          <property>instrumentation/comm/frequencies/selected-mhz</property>
+          <step> 0.025</step>
+          <min>118.000</min>
+          <max>136.975</max>
+          <resolution>0.025</resolution>
+          <wrap>true</wrap>
+        </binding>
+        <binding>                                 <!-- Channel mode, channel -->
+          <condition>
+            <equals>
+              <property>instrumentation/fsg2t/mode</property>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>instrumentation/fsg2t/channel</property>
+          <mask>integer</mask>
+          <step> 1</step>
+          <min>1</min>
+          <max>20</max>
+          <resolution>1</resolution>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+    </animation>
+
+
+<!-- animation of display, visibilities for different operation modes -->
+
+    <animation> <!-- visibility for power-on  -->
+      <type>select</type>
+      <object-name>digit-1</object-name>
+      <object-name>digit-2</object-name>
+      <object-name>digit-3</object-name>
+      <object-name>digit-4</object-name>
+      <object-name>digit-5</object-name>
+      <object-name>digit-6</object-name>
+      <object-name>digit-7</object-name>
+      <object-name>digit-8</object-name>
+      <object-name>digit-011</object-name>
+      <condition>
+        <greater-than>
+          <property>instrumentation/comm/volume</property>
+          <value>0.01</value>
+        </greater-than>
+      </condition>
+    </animation>
+
+    <animation> <!-- visibility for power-on and frequency-mode -->
+      <type>select</type>
+      <object-name>digit-9</object-name>
+      <object-name>digit-010</object-name>
+      <condition>
+        <and>
+          <greater-than>
+            <property>instrumentation/comm/volume</property>
+            <value>0.01</value>
+          </greater-than>
+          <equals>
+            <property>instrumentation/fsg2t/mode</property>
+            <value>0</value>
+          </equals>
+        </and>
+      </condition>
+    </animation>
+
+    <animation> <!-- visibility for power-on and channel-mode -->
+      <type>select</type>
+      <object-name>digit-014</object-name>
+      <condition>
+        <and>
+          <greater-than>
+            <property>instrumentation/comm/volume</property>
+            <value>0.01</value>
+          </greater-than>
+          <equals>
+            <property>instrumentation/fsg2t/mode</property>
+            <value>1</value>
+          </equals>
+        </and>
+      </condition>
+    </animation>
+
+    <animation> <!-- visibility for power-on, frequency-mode and kHz-selected -->
+      <type>select</type>
+      <object-name>digit-012</object-name>
+      <condition>
+        <and>
+          <greater-than>
+            <property>instrumentation/comm/volume</property>
+            <value>0.01</value>
+          </greater-than>
+          <equals>
+            <property>instrumentation/fsg2t/mode</property>
+            <value>0</value>
+          </equals>
+          <equals>
+            <property>instrumentation/fsg2t/select</property>
+            <value>0</value>
+          </equals>
+        </and>
+      </condition>
+    </animation>
+
+    <animation> <!-- visibility for power-on, frequency-mode and MHz-selected -->
+      <type>select</type>
+      <object-name>digit-013</object-name>
+      <condition>
+        <and>
+          <greater-than>
+            <property>instrumentation/comm/volume</property>
+            <value>0.01</value>
+          </greater-than>
+          <equals>
+            <property>instrumentation/fsg2t/mode</property>
+            <value>0</value>
+          </equals>
+          <equals>
+            <property>instrumentation/fsg2t/select</property>
+            <value>1</value>
+          </equals>
+        </and>
+      </condition>
+    </animation>
+
+
+<!-- animation of digits -->
+
+    <animation> <!-- 000.0x MHz -->
+        <type>textranslate</type>
+        <object-name>digit-1</object-name>
+        <property>instrumentation/comm/frequencies/selected-mhz</property>
+        <factor>10.0</factor>
+        <step>0.01</step>
+        <bias>0.005</bias>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation> <!-- 000.x0 MHz -->
+        <type>textranslate</type>
+        <object-name>digit-2</object-name>
+        <property>instrumentation/comm/frequencies/selected-mhz</property>
+        <factor>1.0</factor>
+        <step>0.1</step>
+        <bias>0.005</bias>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation> <!-- 00x.00 MHz -->
+        <type>textranslate</type>
+        <object-name>digit-3</object-name>
+        <property>instrumentation/comm/frequencies/selected-mhz</property>
+        <factor>0.1</factor>
+        <step>1</step>
+        <bias>0.005</bias>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation> <!-- 0x0.00 MHz -->
+        <type>textranslate</type>
+        <object-name>digit-4</object-name>
+        <property>instrumentation/comm/frequencies/selected-mhz</property>
+        <factor>0.01</factor>
+        <step>10</step>
+        <bias>0.005</bias>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation> <!-- x00.00 MHz -->
+        <type>textranslate</type>
+        <object-name>digit-5</object-name>
+        <property>instrumentation/comm/frequencies/selected-mhz</property>
+        <factor>0.0005</factor>
+        <step>100</step>
+        <bias>0.005</bias>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+
+<!-- animation of LED -->
+
+    <animation> <!-- visibility for power-on  -->
+      <type>select</type>
+      <object-name>led-green</object-name>
+      <condition>
+          <greater-than>
+            <property>instrumentation/comm/volume</property>
+            <value>0.5</value>
+          </greater-than>
+      </condition>
+    </animation>
+
+    <animation> <!-- visibility for power-on  -->
+      <type>select</type>
+      <object-name>led-yellow</object-name>
+      <condition>
+        <and>
+          <greater-than>
+            <property>instrumentation/comm/volume</property>
+            <value>0.01</value>
+          </greater-than>
+          <less-than>
+            <property>instrumentation/comm/volume</property>
+            <value>0.50</value>
+          </less-than>
+        </and>
+      </condition>
+    </animation>
+
+    <animation> <!-- visibility for power-off  -->
+      <type>select</type>
+      <object-name>led-off</object-name>
+      <condition>
+        <less-than>
+          <property>instrumentation/comm/volume</property>
+          <value>0.01</value>
+        </less-than>
+      </condition>
+    </animation>
+
+
+
+</PropertyList>
