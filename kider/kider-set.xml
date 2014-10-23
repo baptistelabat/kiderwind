@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+JSBSim kider with 3D cockpit.
+
+Started 2008-06-19 by Nikolaus Kerner, 
+Current 2013-01-01
+************************************************************************
+-->
+
+<PropertyList>
+
+  <sim>
+
+    <description>Glaser-Dirks kider (JSBSIM)</description>
+    <author>Nikolaus Kerner</author>
+    <status>development</status>
+    <rating>
+      <FDM     type="int">3</FDM>
+      <systems type="int">4</systems>
+      <cockpit type="int">3</cockpit>
+      <model   type="int">4</model>
+    </rating>
+    <aircraft-version>2013-01-01</aircraft-version>
+    <startup>
+      <splash-texture>Aircraft/kider/splash.png</splash-texture>
+    </startup>
+
+
+
+
+    <flight-model archive="y">jsb</flight-model>
+    <aero archive="y">kider_jsbsim</aero>
+
+
+
+
+    <model>
+      <path archive="y">Aircraft/kider/Models/kider.xml</path>
+      
+      
+      <livery>
+        <file type="string"/>
+      </livery>
+      
+      
+    </model>
+
+
+
+
+
+
+    <help>
+      <title>Glaser Dirks kider</title>
+      <line>- Start with winch</line>
+      <line>- Start with drag robot</line>
+      <line>implemented in the kider</line>
+      <line> Ctrl-b: toggle speedbrake</line>
+      <line>         (or use throttle)</line>
+      <line> B     : toggle parking brake</line>
+      <line> b     : apply all brakes</line>
+      <line> G     : Gear down</line>
+      <line> g     : Gear up</line>
+      <line>experimental winch support</line>
+      <line> Ctrl-w: place winch</line>
+      <line> w     : run winch</line>
+      <line> W     : release winch</line>
+      <line>experimental AI aerotowing support</line>
+      <line> Ctrl-o: find a dragger</line>
+      <line> o     : hook in </line>
+      <line> O     : release tow </line>
+      <line>experimental drag robot support</line>
+      <line> d     : start/stop drag roboter</line>
+      <line> D     : create drag roboter</line>
+      <line> Ctrl-d: update presets from property tree</line>
+      <line>experimental water ballast support</line>
+      <line> T     : load water ballast</line>
+      <line> t     : toggle dumping ballast</line>
+      <line>experimental thermal support</line>
+      <line> Ctrl-t: arrange thermals around local position</line>
+    </help>
+
+
+
+
+    <!-- hide the 2D panel -->
+    <panel>
+      <visibility archive="y">false</visibility>
+    </panel>
+
+
+
+
+    <!-- adjust the pilot viewpoint and angle -->
+    <view>
+      <name>Pilot</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <x-offset-m archive="y"> 0.00</x-offset-m>
+        <y-offset-m archive="y"> 0.15</y-offset-m>
+        <z-offset-m archive="y">-0.56</z-offset-m>              <!-- 1.65 - 2.21 = -0.56 -->
+        <pitch-offset-deg>-10</pitch-offset-deg>
+      </config>
+    </view>
+    
+    <!-- positive x-values move the viewpoint to the right -->
+    <!-- negative x-values move the viewpoint to the left -->
+    <!-- positive y-values move the viewpoint to the top -->
+    <!-- negative y-values move the viewpoint to the bottom -->
+    <!-- positive z-values move the viewpoint to the back -->
+    <!-- negative z-values move the viewpoint to the front -->
+    
+    <!-- position the viewpoint closer to the panel -->
+    <view n="kider">
+      <name>kider</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <x-offset-m archive="y"> 0.00</x-offset-m>
+        <y-offset-m archive="y"> 0.00</y-offset-m>
+        <z-offset-m archive="y">-0.86</z-offset-m>               <!-- 1.35 - 2.21 = -0.86 -->
+        <pitch-offset-deg>-5</pitch-offset-deg>
+      </config>
+    </view>
+    
+    <!-- position the viewpoint slightly above the pilot -->
+    <view n="102">
+      <name>102</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <x-offset-m archive="y"> 0.00</x-offset-m>
+        <y-offset-m archive="y"> 0.50</y-offset-m>
+        <z-offset-m archive="y">-0.76</z-offset-m>               <!-- 1.45 - 2.21 = -0.76 -->
+        <pitch-offset-deg>-5</pitch-offset-deg>
+      </config>
+    </view>
+
+
+
+
+    <sound>
+      <path archive="y">Aircraft/kider/kider_sound.xml</path>
+    </sound>
+
+
+
+
+    <menubar>
+      <default>
+        <menu n="100">
+          <label>kider</label>
+          <item>
+            <label>Select Livery</label>
+            <binding>
+              <command>nasal</command>
+              <script>aircraft.livery.dialog.toggle()</script>
+            </binding>
+          </item>
+          <item>
+            <label>Configure Loads</label>
+            <binding>
+              <command>nasal</command>
+              <script>kider.config_dialog.open()</script>.
+            </binding>
+          </item>
+          <item>
+            <label>Winch Launch</label>
+            <binding>
+              <command>nasal</command>
+              <script>kider.winch_dialog.open()</script>.
+            </binding>
+          </item>
+          <item>
+            <label>Aerotowing MP/AI</label>
+            <binding>
+              <command>nasal</command>
+              <script>kider.aerotowing_ai_dialog.open()</script>.
+            </binding>
+          </item>
+          <item>
+            <label>Drag Roboter</label>
+            <binding>
+              <command>nasal</command>
+              <script>kider.dragrobot_dialog.open()</script>.
+            </binding>
+          </item>
+        </menu>
+      </default>
+    </menubar>
+
+
+
+
+    <glider>
+      <ballast>
+        <mass_per_tank_lbs>110.0</mass_per_tank_lbs>
+        <mass_lbs_per_second>3.0</mass_lbs_per_second>
+      </ballast>
+      <winch>
+        <conf>
+          <rope_initial_length_m>1000.0</rope_initial_length_m>
+          <pull_max_lbs>1102.0</pull_max_lbs> <!-- 500daN -->
+        </conf>
+      </winch>
+      <towing>
+        <conf>
+          <rope_length_m>60.0</rope_length_m>
+          <nominal_towforce_lbs>500.0</nominal_towforce_lbs>
+          <breaking_towforce_lbs>9999.0</breaking_towforce_lbs>
+        </conf>
+        <hooked>0</hooked>
+      </towing>
+    </glider>
+
+  </sim>
+
+
+
+
+  <instrumentation>
+    <comm>
+      <volume type="float">0</volume>
+    </comm>
+    <fsg2t>
+      <channel type="int">1</channel>
+      <mode type="int">0</mode>         <!-- 0 = direct tune, 1 = channel mode -->
+      <select type="int">0</select>     <!-- 0 = kHz tune, 1 = MHz tune -->
+      <channel_00 type="float">118.000</channel_00>
+      <channel_01 type="float">118.000</channel_01>
+      <channel_02 type="float">118.000</channel_02>
+      <channel_03 type="float">118.000</channel_03>
+      <channel_04 type="float">118.000</channel_04>
+      <channel_05 type="float">118.000</channel_05>
+      <channel_06 type="float">118.000</channel_06>
+      <channel_07 type="float">118.000</channel_07>
+      <channel_08 type="float">118.000</channel_08>
+      <channel_09 type="float">118.000</channel_09>
+      <channel_10 type="float">118.000</channel_10>
+      <channel_11 type="float">118.000</channel_11>
+      <channel_12 type="float">118.000</channel_12>
+      <channel_13 type="float">118.000</channel_13>
+      <channel_14 type="float">118.000</channel_14>
+      <channel_15 type="float">118.000</channel_15>
+      <channel_16 type="float">118.000</channel_16>
+      <channel_17 type="float">118.000</channel_17>
+      <channel_18 type="float">118.000</channel_18>
+      <channel_19 type="float">118.000</channel_19>
+      <channel_20 type="float">118.000</channel_20>
+    </fsg2t>
+  </instrumentation>
+
+
+
+  <input>
+    <keyboard>
+    
+      <key n="23">
+        <name>Ctrl-w</name>
+        <desc>Place Winch and hook in</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.placeWinch()</script>
+        </binding>
+      </key>
+      
+      <key n="119">
+        <name>w</name>
+        <desc>Start winch</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.startWinch()</script>
+        </binding>
+      </key>
+      
+      <key n="87">
+        <name>W</name>
+        <desc>Release winch hook</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.releaseWinch()</script>
+        </binding>
+      </key>
+      
+      <key n="15">
+        <name>Ctrl-o</name>
+        <desc>Find dragger</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.findDragger()</script>
+        </binding>
+      </key>
+      
+      <key n="111">
+        <name>o</name>
+        <desc>Hook on dragger</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.hookDragger()</script>
+        </binding>
+      </key>
+      
+      <key n="79">
+        <name>O</name>
+        <desc>Release drag hook</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.releaseDragger()</script>
+        </binding>
+      </key>
+      
+      <key n="4">
+        <name>Ctrl-d</name>
+        <desc>update presets drag robot</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.presetsRobot()</script>
+        </binding>
+      </key>
+      
+      <key n="100">
+        <name>d</name>
+        <desc>Drag robot</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.startDragRobot()</script>
+        </binding>
+      </key>
+      
+      <key n="68">
+        <name>D</name>
+        <desc>run drag robot</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.setupDragRobot()</script>
+        </binding>
+      </key>
+      
+      <key n="20">
+        <name>Ctrl-t</name>
+        <desc>update thermals to local</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.updateThermals()</script>
+        </binding>
+      </key>
+      
+      <key n="84">
+        <name>T</name>
+        <desc>load water ballast</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.loadBallast()</script>
+        </binding>
+      </key>
+      
+      <key n="116">
+        <name>t</name>
+        <desc>toggle ballast dumping</desc>
+        <binding>
+          <command>nasal</command>
+          <script>kider.toggleBallastDump()</script>
+        </binding>
+      </key>
+      
+    
+    </keyboard>
+    
+  </input>
+
+
+
+
+  <nasal>
+    <kider>
+      <file>Aircraft/kider/Nasal/aerotowing.nas</file>
+      <file>Aircraft/kider/Nasal/dialogs.nas</file>
+      <file>Aircraft/kider/Nasal/dragrobot.nas</file>
+      <file>Aircraft/kider/Nasal/liveries.nas</file>
+      <file>Aircraft/kider/Nasal/messages.nas</file>
+      <file>Aircraft/kider/Nasal/te-vario.nas</file>
+      <file>Aircraft/kider/Nasal/thermal.nas</file>
+      <file>Aircraft/kider/Nasal/waterballast.nas</file>
+      <file>Aircraft/kider/Nasal/winch.nas</file>
+      <!-- This binds the joystick's throttle slider to the spoilers. -->
+      <file>Aircraft/kider/Nasal/speedbrakes_throttle.nas</file>
+    </kider>
+  </nasal>
+
+
+
+
+</PropertyList>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<!-- climb/sink indicator -->
+
+<PropertyList>
+
+  <path>80mm_vsi_5stv5_kider.ac</path>
+  <texture-path>Textures</texture-path>
+
+
+
+  <animation>
+    <type>rotate</type>
+    <object-name>maccready</object-name>
+    <property>/instrumentation/te-vario/setting-maccready</property>
+    <interpolation>
+     <entry>
+       <ind>-5</ind>
+       <dep>-125</dep>
+     </entry>
+     <entry>
+       <ind> 5</ind>
+       <dep> 125</dep>
+     </entry>
+      </interpolation>
+   <axis>
+     <x>-1</x>
+     <y>0</y>
+     <z>0</z>
+   </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>maccready</object-name>
+  <action>
+    <name>increase adjust fine</name>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/te-vario/setting-maccready</property>
+      <step>0.1</step>
+      <min>-5</min>
+      <max>5</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  </animation>
+  
+  <animation>
+  <type>pick</type>
+  <object-name>maccready</object-name>
+  <action>
+    <name>decrease adjust fine</name>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/te-vario/setting-maccready</property>
+      <step>-0.1</step>
+      <min>-5</min>
+      <max>5</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  </animation>
+
+
+
+
+
+</PropertyList>
