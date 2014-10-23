@@ -145,7 +145,7 @@
       <legend>advanced configuration drag roboter</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.dragrobot_advanced_dialog.open()</script>
+        <script>kider.dragrobot_advanced_dialog.open()</script>
       </binding>
     </button>
     <empty>
@@ -162,7 +162,7 @@
       <legend>advanced configuration aerotowing</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.aerotowing_advanced_dialog.open()</script>
+        <script>kider.aerotowing_advanced_dialog.open()</script>
       </binding>
     </button>
     <empty>
@@ -182,11 +182,11 @@
       <legend>Reset</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.resetRobotAttributes()</script>
+        <script>kider.resetRobotAttributes()</script>
       </binding>
       <binding>
         <command>nasal</command>
-        <script>dg101g.resetTowing()</script>
+        <script>kider.resetTowing()</script>
       </binding>
     </button>
     <empty>
@@ -196,7 +196,7 @@
       <legend>Create</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.setupDragRobot()</script>
+        <script>kider.setupDragRobot()</script>
       </binding>
     </button>
     <empty>
@@ -206,7 +206,7 @@
       <legend>Remove</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.removeDragRobot()</script>
+        <script>kider.removeDragRobot()</script>
       </binding>
     </button>
     <empty>
@@ -216,7 +216,7 @@
       <legend>Run</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.guiRunDragRobot()</script>
+        <script>kider.guiRunDragRobot()</script>
       </binding>
       <binding>
         <command>dialog-close</command>
@@ -229,7 +229,7 @@
       <legend>Cancel</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.guiCancelDragRobot()</script>
+        <script>kider.guiCancelDragRobot()</script>
       </binding>
       <binding>
         <command>dialog-close</command>

@@ -1,6 +1,6 @@
 # ####################################################################################
 # ####################################################################################
-# Nasal script to manage winch-launch for JSBSIM gliders (like DG-101G)
+# Nasal script to manage winch-launch for JSBSIM gliders (like kider)
 #
 # ####################################################################################
 # Author: Klaus Kerner
@@ -417,7 +417,7 @@ var placeWinch = func {
       # setup model properties
       winchrope_mod.model = winchrope_mod.getChild("model", freeModelid, 1);
       winchrope_mod.model.getNode("path", 1).setValue(
-            "Aircraft/DG-101G/Models/Ropes/winchrope.xml");
+            "Aircraft/kider/Models/Ropes/winchrope.xml");
       winchrope_mod.model.getNode("longitude-deg-prop", 1).setValue(
             "ai/models/winchrope/position/longitude-deg");
       winchrope_mod.model.getNode("latitude-deg-prop", 1).setValue(

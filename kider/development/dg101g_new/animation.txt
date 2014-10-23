@@ -28,7 +28,7 @@ wings
 
 
 
-Animationen aus DG-101G.xml
+Animationen aus kider.xml
 
 stick
 pedal_l

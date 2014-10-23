@@ -197,7 +197,7 @@
       <legend>advanced configuration</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.winch_advanced_dialog.open()</script>
+        <script>kider.winch_advanced_dialog.open()</script>
       </binding>
     </button>
     <empty>
@@ -215,7 +215,7 @@
       <legend>Reset</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.resetWinch()</script>
+        <script>kider.resetWinch()</script>
       </binding>
     </button>
     <empty>
@@ -225,7 +225,7 @@
       <legend>Create</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.placeWinch()</script>
+        <script>kider.placeWinch()</script>
       </binding>
     </button>
     <empty>
@@ -235,7 +235,7 @@
       <legend>Remove</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.removeWinch()</script>
+        <script>kider.removeWinch()</script>
       </binding>
     </button>
     <empty>
@@ -245,7 +245,7 @@
       <legend>Run</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.startWinch()</script>
+        <script>kider.startWinch()</script>
       </binding>
       <binding>
         <command>dialog-close</command>
@@ -258,7 +258,7 @@
       <legend>Cancel</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.guiWinchCancel()</script>
+        <script>kider.guiWinchCancel()</script>
       </binding>
       <binding>
         <command>dialog-close</command>

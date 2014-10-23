@@ -398,7 +398,7 @@ var createDragRobot = func {
   dragger_ai.getNode("velocities/vertical-speed-fps", 1).setValue(0);
   
   dragger_mod.model = dragger_mod.getChild("model", freeModelid, 1);
-  dragger_mod.model.getNode("path", 1).setValue("Aircraft/DG-101G/Models/Dragger/robot.xml");
+  dragger_mod.model.getNode("path", 1).setValue("Aircraft/kider/Models/Dragger/robot.xml");
   dragger_mod.model.getNode("longitude-deg-prop", 1).setValue(
         "ai/models/dragger/position/longitude-deg");
   dragger_mod.model.getNode("latitude-deg-prop", 1).setValue(

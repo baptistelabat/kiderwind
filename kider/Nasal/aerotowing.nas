@@ -363,7 +363,7 @@ var listCandidates = func {
       setprop(candidate_x_sl_prop, 0);
       # set color in dialog for aerotowing
       var guigroup = index + 1;
-      var guicolor = "sim/gui/dialogs/dg101g/dragger/dialog/group[1]/group[" ~ guigroup ~ "]/text[";
+      var guicolor = "sim/gui/dialogs/kider/dragger/dialog/group[1]/group[" ~ guigroup ~ "]/text[";
         setprop(guicolor ~ "0]/color/green", 0.1 );
         setprop(guicolor ~ "0]/color/red", 0.1 );
         setprop(guicolor ~ "0]/color/blue", 0.1 );
@@ -390,7 +390,7 @@ var listCandidates = func {
       setprop(candidate_x_sl_prop, 0);
       # set color in dialog for aerotowing
       var guigroup = index + 1;
-      var guicolor = "sim/gui/dialogs/dg101g/dragger/dialog/group[1]/group[" ~ guigroup ~ "]/text[";
+      var guicolor = "sim/gui/dialogs/kider/dragger/dialog/group[1]/group[" ~ guigroup ~ "]/text[";
       if ( candidates_dst_m[index] < 1000) {
         setprop(guicolor ~ "0]/color/green", 0.9 );
         setprop(guicolor ~ "0]/color/red", 0.1 );
@@ -668,7 +668,7 @@ var createTowingRope = func {
   towrope_ai.getNode("orientation/roll-deg", 1).setValue(0);
   
   towrope_mod.model = towrope_mod.getChild("model", freeModelid, 1);
-  towrope_mod.model.getNode("path", 1).setValue("Aircraft/DG-101G/Models/Ropes/towingrope.xml");
+  towrope_mod.model.getNode("path", 1).setValue("Aircraft/kider/Models/Ropes/towingrope.xml");
   towrope_mod.model.getNode("longitude-deg-prop", 1).setValue(
         "ai/models/towrope/position/longitude-deg");
   towrope_mod.model.getNode("latitude-deg-prop", 1).setValue(

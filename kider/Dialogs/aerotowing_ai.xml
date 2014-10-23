@@ -47,7 +47,7 @@
         </enable>
         <binding>
           <command>nasal</command>
-          <script>dg101g.selectCandidates(0)</script>
+          <script>kider.selectCandidates(0)</script>
         </binding>
       </checkbox>
       <text>
@@ -120,7 +120,7 @@
         </enable>
         <binding>
           <command>nasal</command>
-          <script>dg101g.selectCandidates(1)</script>
+          <script>kider.selectCandidates(1)</script>
         </binding>
       </checkbox>
       <text>
@@ -193,7 +193,7 @@
         </enable>
         <binding>
           <command>nasal</command>
-          <script>dg101g.selectCandidates(2)</script>
+          <script>kider.selectCandidates(2)</script>
         </binding>
       </checkbox>
       <text>
@@ -266,7 +266,7 @@
         </enable>
         <binding>
           <command>nasal</command>
-          <script>dg101g.selectCandidates(3)</script>
+          <script>kider.selectCandidates(3)</script>
         </binding>
       </checkbox>
       <text>
@@ -339,7 +339,7 @@
         </enable>
         <binding>
           <command>nasal</command>
-          <script>dg101g.selectCandidates(4)</script>
+          <script>kider.selectCandidates(4)</script>
         </binding>
       </checkbox>
       <text>
@@ -460,7 +460,7 @@
       <legend>advanced configuration aerotowing</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.aerotowing_advanced_dialog.open()</script>
+        <script>kider.aerotowing_advanced_dialog.open()</script>
       </binding>
     </button>
     <empty>
@@ -480,7 +480,7 @@
       <legend>Reset Properties</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.resetTowing()</script>
+        <script>kider.resetTowing()</script>
       </binding>
     </button>
     <empty><stretch>true</stretch></empty>
@@ -497,7 +497,7 @@
       <legend>Close</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.hookDragger()</script>
+        <script>kider.hookDragger()</script>
       </binding>
       <binding>
         <command>dialog-close</command>
@@ -508,7 +508,7 @@
       <legend>Cancel</legend>
       <binding>
         <command>nasal</command>
-        <script>dg101g.restorePosition()</script>
+        <script>kider.restorePosition()</script>
       </binding>
       <binding>
         <command>dialog-close</command>
@@ -519,11 +519,11 @@
   <!-- possible draggers listing -->
     <nasal>
       <open>
-        dg101g.releaseDragger();
-        dg101g.listCandidates();
+        kider.releaseDragger();
+        kider.listCandidates();
       </open>
       <close>
-        dg101g.removeCandidates();
+        kider.removeCandidates();
       </close>
     </nasal>
 

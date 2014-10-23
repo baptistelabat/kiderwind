@@ -9,30 +9,30 @@
 
 # ####################################################################################
 # basic fucntions to create dialogs
-var config_dialog = gui.Dialog.new("sim/gui/dialogs/dg101g/config/dialog", 
-                                   "Aircraft/DG-101G/Dialogs/config.xml");
+var config_dialog = gui.Dialog.new("sim/gui/dialogs/kider/config/dialog", 
+                                   "Aircraft/kider/Dialogs/config.xml");
 
 var aerotowing_ai_dialog = gui.Dialog.new(
-                                  "sim/gui/dialogs/dg101g/aerotowing_ai/dialog", 
-                                  "Aircraft/DG-101G/Dialogs/aerotowing_ai.xml");
+                                  "sim/gui/dialogs/kider/aerotowing_ai/dialog", 
+                                  "Aircraft/kider/Dialogs/aerotowing_ai.xml");
 
 var aerotowing_advanced_dialog = gui.Dialog.new(
-                                  "sim/gui/dialogs/dg101g/aerotowing_advanced/dialog",
-                                  "Aircraft/DG-101G/Dialogs/aerotowing_advanced.xml");
+                                  "sim/gui/dialogs/kider/aerotowing_advanced/dialog",
+                                  "Aircraft/kider/Dialogs/aerotowing_advanced.xml");
 
 
-var dragrobot_dialog = gui.Dialog.new("sim/gui/dialogs/dg101g/dragrobot/dialog", 
-                                  "Aircraft/DG-101G/Dialogs/dragrobot.xml");
+var dragrobot_dialog = gui.Dialog.new("sim/gui/dialogs/kider/dragrobot/dialog", 
+                                  "Aircraft/kider/Dialogs/dragrobot.xml");
 var dragrobot_advanced_dialog = gui.Dialog.new(
-                                  "sim/gui/dialogs/dg101g/dragrobot_advanced/dialog",
-                                  "Aircraft/DG-101G/Dialogs/dragrobot_advanced.xml");
+                                  "sim/gui/dialogs/kider/dragrobot_advanced/dialog",
+                                  "Aircraft/kider/Dialogs/dragrobot_advanced.xml");
 
-var winch_dialog = gui.Dialog.new("sim/gui/dialogs/dg101g/winch/dialog", 
-                                  "Aircraft/DG-101G/Dialogs/winch.xml");
+var winch_dialog = gui.Dialog.new("sim/gui/dialogs/kider/winch/dialog", 
+                                  "Aircraft/kider/Dialogs/winch.xml");
 
 var winch_advanced_dialog = gui.Dialog.new(
-                                  "sim/gui/dialogs/dg101g/winch_advanced/dialog", 
-                                  "Aircraft/DG-101G/Dialogs/winch_advanced.xml");
+                                  "sim/gui/dialogs/kider/winch_advanced/dialog", 
+                                  "Aircraft/kider/Dialogs/winch_advanced.xml");
 
 
 # ####################################################################################
@@ -85,8 +85,8 @@ var guiconfig3    = setlistener("/fdm/jsbsim/inertia/pointmass-weight-lbs[3]",
 # ####################################################################################
 # winch dialog: helper function to cancel the winch, avoiding race conditions
 var guiWinchCancel = func {
-    dg101g.removeWinch();
-    dg101g.resetWinch();
+    kider.removeWinch();
+    kider.resetWinch();
 }
  
 
@@ -213,18 +213,18 @@ var guiUpdateDragRobot = func {
 # ####################################################################################
 # drag-robot dialog: helper function to run the roboter, avoiding race conditions
 var guiRunDragRobot = func {
-    dg101g.findDragger();
-    dg101g.hookDragger();
-    dg101g.startDragRobot();
+    kider.findDragger();
+    kider.hookDragger();
+    kider.startDragRobot();
 }
 
 
 # ####################################################################################
 # drag-robot dialog: helper function to cancel the roboter, avoiding race conditions
 var guiCancelDragRobot = func {
-    dg101g.removeDragRobot();
-    dg101g.resetRobotAttributes();
-    dg101g.removeTowingRope();
+    kider.removeDragRobot();
+    kider.resetRobotAttributes();
+    kider.removeTowingRope();
 }
 
 

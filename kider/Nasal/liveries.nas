@@ -8,4 +8,4 @@
 #
 
 
-aircraft.livery.init("Aircraft/DG-101G/Models/Liveries");
+aircraft.livery.init("Aircraft/kider/Models/Liveries");
